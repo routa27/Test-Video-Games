@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import GamesList from '../../components/gamesList/GamesList';
+import Loader from '../../components/loader/Loader';
+import Pagination from '../../components/pagination/Pagination';
 import { useGameGenresQuery } from '../../hooks/useGameGenders';
 import { useGamePlatformsQuery } from '../../hooks/useGamePlatform';
 import { useGamesListQuery } from '../../hooks/useGamesList';
@@ -11,6 +13,7 @@ const Home = () => {
 	const [selectedGenre, setSelectedGenre] = useState();
 	const [selectedPlatform, setSelectedPlatform] = useState();
 	const {
+		isLoading,
 		isError,
 		error,
 		data: gamesList,
@@ -69,7 +72,15 @@ const Home = () => {
 						})}
 				</select>
 			</GamesFilterContainer>
-			<GamesList games={gamesList?.results} />
+			{isLoading ? <Loader /> : <GamesList games={gamesList?.results} />}
+
+			{!isLoading && gamesList?.count > 0 && (
+				<Pagination
+					page={page}
+					setPage={setPage}
+					totalResults={gamesList?.count}
+				/>
+			)}
 		</HomeContainer>
 	);
 };
