@@ -20,7 +20,7 @@ Copy the `.env.dist` file and rename it to `.env.local` and replace the content 
 ```
 VITE_RAWG_BASE_URL="https://rawg.io"
 VITE_RAWG_API_URL="https://rawg.io/api"
-VITE_RAWG_API_KEY="01890e0870e54950a6b5c9479242d6ef"
+VITE_RAWG_API_KEY="PUT_YOUR_RAWG_API_KEY"
 ```
 
 This project was bootstrapped with [create vite](https://vitejs.dev/guide/).
